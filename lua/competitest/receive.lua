@@ -26,7 +26,8 @@ function M.eval_receive_modifiers(str, task, file_extension, remove_illegal_char
 		["HOME"] = luv.os_homedir(), -- home directory
 		["CWD"] = vim.fn.getcwd(), -- current working directory
 		["FEXT"] = file_extension,
-		["PROBLEM"] = task.name, -- problem name, name field
+		-- ["PROBLEM"] = task.name, -- problem name, name field
+    ["PROBLEM"] = string.gsub(task.name, "%s+", "_"),
 		["GROUP"] = task.group, -- judge and contest name, group field
 		["JUDGE"] = judge, -- first part of group, before hyphen
 		["CONTEST"] = contest, -- second part of group, after hyphen
